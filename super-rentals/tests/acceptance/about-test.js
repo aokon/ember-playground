@@ -9,6 +9,6 @@ test('visiting /about', function(assert) {
   andThen(function() {
     assert.equal(currentURL(), '/about');
     assert.equal(find('h2').text(), 'About Us', 'It has valid title');
-    assert.equal(find('p').length, 2, 'It has content paragraphs');
+    assert.equal(find('p').length, 2, 'It has valid content paragraphs number');
   });
 });
