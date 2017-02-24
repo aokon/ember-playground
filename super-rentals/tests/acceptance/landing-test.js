@@ -1,21 +1,22 @@
 import { test } from 'qunit';
 import moduleForAcceptance from 'super-rentals/tests/helpers/module-for-acceptance';
 
-moduleForAcceptance('Acceptance | list rendatals');
+moduleForAcceptance('Acceptance | landing');
 
-test('visiting / redirects to /rentals', function(assert) {
+test('visiting / redirects to /landing', function(assert) {
   visit('/');
 
   andThen(function() {
-    assert.equal(currentURL(), '/rentals');
+    assert.equal(currentURL(), '/landing');
   });
 });
 
-test('displays rentals', function(assert) {
+test('displays landing', function(assert) {
   visit('/');
 
   andThen(function() {
-    assert.equal(find('.rental').length, 3, 'It renders default rentals');
+    assert.equal(find('.category-card').length, 4,
+      'It renders default categories');
   });
 });
 
