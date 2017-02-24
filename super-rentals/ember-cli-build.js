@@ -1,10 +1,16 @@
 /*jshint node:true*/
 /* global require, module */
+var pickFiles = require('broccoli-static-compiler');
+var mergeTrees = require('broccoli-merge-trees');
 var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 module.exports = function(defaults) {
   var app = new EmberApp(defaults, {
-    // Add options here
+    sassOptions: {
+      includePaths: [
+        'bower_components/materialize/sass'
+      ]
+    }
   });
 
   // Use `app.import` to add additional libraries to the generated
@@ -20,5 +26,14 @@ module.exports = function(defaults) {
   // please specify an object with the list of modules as keys
   // along with the exports of each module as its value.
 
-  return app.toTree();
+  app.import('bower_components/materialize/dist/js/materialize.js');
+
+  var robotoFonts = pickFiles('bower_components/materialize/fonts', {
+    srcDir: '/roboto',
+    files: ['*.eot', '*.ttf', '*.woff', '*.woff2'],
+    destDir: '/assets/fonts/roboto'
+
+  })
+
+  return mergeTrees([app.toTree(), robotoFonts]);
 };
