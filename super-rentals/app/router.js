@@ -11,6 +11,7 @@ Router.map(function() {
   this.route('contact');
   this.route('about');
   this.route('landing');
+  this.route('category', { path: '/category/:id' });
 });
 
 export default Router;

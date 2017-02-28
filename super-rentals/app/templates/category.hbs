@@ -1,0 +1,5 @@
+<h2>Rentals for category: {{model.name}}</h2>
+
+{{#each rentals as |rental|}}
+  {{product-card product=rental}}
+{{/each}}
