@@ -36,7 +36,8 @@ const rentals = [
     attributes: {
       name: 'Product 1',
       description: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam ',
-      image: ''
+      image: '',
+      rating: 3
     },
     includes: {
       category_id: 1
@@ -48,7 +49,8 @@ const rentals = [
     attributes: {
       name: 'Product 2',
       description: 'Lorem it amet, consetetur sadipscing elitr, sed diam ',
-      image: ''
+      image: '',
+      rating: 4
     },
     includes: {
       category_id: 2
@@ -60,7 +62,8 @@ const rentals = [
     attributes: {
       name: 'Product 3',
       description: 'Lorem it amet, consetetur sadipscing elitr, sed diam ',
-      image: ''
+      image: '',
+      rating: 3
     },
     includes: {
       category_id: 1
@@ -72,7 +75,8 @@ const rentals = [
     attributes: {
       name: 'Product 4',
       description: 'Lorem it amet, consetetur sadipscing elitr, sed diam ',
-      image: ''
+      image: '',
+      rating: 5
     },
     includes: {
       category_id: 3
@@ -85,9 +89,7 @@ export default function() {
   this.namespace = 'api';
 
   this.get('/categories', () => {
-    return {
-      data: categories
-    };
+    return { data: categories };
   });
 
   this.get('/categories/:id', (_schema, request) => {
@@ -96,19 +98,22 @@ export default function() {
       return category.id === categoryId;
     })[0];
 
-    return {
-      data: category
-    };
+    return { data: category };
   });
 
   this.get('/rentals', (_schema, request) => {
-    const categoryId = Number(request.queryParams['filter[id]']);
-    const rentalsForCategory = rentals.filter((rental) => {
+    const categoryId = Number(request.queryParams['filter[category_id]']);
+    const rating = Number(request.queryParams['filter[rating]']);
+    let rentalsForCategory = rentals.filter((rental) => {
       return rental['includes'].category_id === categoryId;
     });
 
-    return {
-      data: rentalsForCategory
-    };
+    if(rating) {
+      rentalsForCategory = rentalsForCategory.filter((rental) => {
+        return rental.attributes.rating >= rating;
+      });
+    }
+
+    return { data: rentalsForCategory };
   });
 }
