@@ -1,109 +1,32 @@
-const categories = [{
-    type: 'category',
-    id: 1,
-    attributes: {
-      name: 'Category 1',
-      slug: 'category-1'
-    }
-  }, {
-    type: 'category',
-    id: 2,
-    attributes: {
-      name: 'Category 2',
-      slug: 'category-2'
-    }
-  }, {
-    type: 'category',
-    id: 3,
-    attributes: {
-      name: 'Category 3',
-      slug: 'category-3'
-    }
-  }, {
-    type: 'category',
-    id: 4,
-    attributes: {
-      name: 'Category 4',
-      slug: 'category-4'
-    }
-  }
-];
-
-const rentals = [
-  {
-    type: 'rental',
-    id: 1,
-    attributes: {
-      name: 'Product 1',
-      description: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam ',
-      image: '',
-      rating: 3
-    },
-    includes: {
-      category_id: 1
-    }
-  },
-  {
-    type: 'rental',
-    id: 2,
-    attributes: {
-      name: 'Product 2',
-      description: 'Lorem it amet, consetetur sadipscing elitr, sed diam ',
-      image: '',
-      rating: 4
-    },
-    includes: {
-      category_id: 2
-    }
-  },
-  {
-    type: 'rental',
-    id: 3,
-    attributes: {
-      name: 'Product 3',
-      description: 'Lorem it amet, consetetur sadipscing elitr, sed diam ',
-      image: '',
-      rating: 3
-    },
-    includes: {
-      category_id: 1
-    }
-  },
-  {
-    type: 'rental',
-    id: 4,
-    attributes: {
-      name: 'Product 4',
-      description: 'Lorem it amet, consetetur sadipscing elitr, sed diam ',
-      image: '',
-      rating: 5
-    },
-    includes: {
-      category_id: 3
-    }
-  },
-];
-
+const serializeToJSONAPI = function(type, attrs) {
+  return({
+    type: type,
+    id: attrs.id,
+    attributes: attrs
+  });
+};
 
 export default function() {
   this.namespace = 'api';
 
-  this.get('/categories', () => {
+  this.get('/categories', (schema) => {
+    const categories = schema.db.categories.map((attrs) => {
+      return serializeToJSONAPI('category', attrs);
+    });
+
     return { data: categories };
   });
 
-  this.get('/categories/:id', (_schema, request) => {
-    const categoryId = Number(request.params.id);
-    const category = categories.filter((category) => {
-      return category.id === categoryId;
-    })[0];
+  this.get('/categories/:id', (schema, request) => {
+    const categoryId = parseInt(request.params.id);
+    const category = schema.db.categories.find(categoryId);
 
-    return { data: category };
+    return { data: serializeToJSONAPI(category) };
   });
 
   this.get('/rentals', (_schema, request) => {
-    const categoryId = Number(request.queryParams['filter[category_id]']);
-    const rating = Number(request.queryParams['filter[rating]']);
+    const categoryId = parseInt(request.queryParams['filter[category_id]']);
+    const rating = parseInt(request.queryParams['filter[rating]']);
     let rentalsForCategory = rentals.filter((rental) => {
       return rental['includes'].category_id === categoryId;
     });
