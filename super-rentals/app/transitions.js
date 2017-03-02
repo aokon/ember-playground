@@ -40,25 +40,4 @@ export default function() {
     this.use('toLeft'),
     this.reverse('toRight')
   );
-
-  this.transition(
-    this.fromRoute('contact'),
-    this.toRoute('landing'),
-    this.use('toLeft'),
-    this.reverse('toRight')
-  );
-
-  this.transition(
-    this.fromRoute('about'),
-    this.toRoute('contact'),
-    this.use('toLeft'),
-    this.reverse('toRight')
-  );
-
-  this.transition(
-    this.fromRoute('about'),
-    this.toRoute('landing'),
-    this.use('toLeft'),
-    this.reverse('toRight')
-  );
 }
