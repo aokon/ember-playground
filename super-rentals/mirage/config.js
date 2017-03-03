@@ -1,9 +1,17 @@
 const serializeToJSONAPI = function(type, attrs) {
-  return({
+  const relationships = attrs.relationships;
+  delete attrs.relationships;
+  const output = {
     type: type,
     id: attrs.id,
     attributes: attrs
-  });
+  };
+
+  if(relationships) {
+    output['relationships'] = relationships;
+  }
+
+  return output;
 };
 
 export default function() {

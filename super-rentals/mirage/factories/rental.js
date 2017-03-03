@@ -6,7 +6,15 @@ export default Factory.extend({
   },
 
   description() {
-    return faker.lorem.paragraph().substring(0, 200);
+    return faker.lorem.paragraph().substring(0, 100);
+  },
+
+  price() {
+    return faker.finance.amount();
+  },
+
+  currency() {
+    return '$';
   },
 
   image() {
