@@ -1,9 +1,11 @@
 import Ember from 'ember';
 
 const {
-  Controller
+  Controller,
+  inject
 } = Ember;
 
 export default Controller.extend({
+  cart: inject.service(),
   showSpinner: false
 });
