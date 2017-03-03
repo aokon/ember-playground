@@ -1,6 +1,7 @@
 {
   "name": "super-rentals",
   "dependencies": {
-    "materialize": "0.98.0"
+    "materialize": "0.98.0",
+    "blob-polyfill": "^1.0.20150320"
   }
 }
