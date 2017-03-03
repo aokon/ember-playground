@@ -18,24 +18,28 @@ export default function() {
   });
 
   this.get('/categories/:id', (schema, request) => {
-    const categoryId = parseInt(request.params.id);
+    const categoryId = request.params.id;
     const category = schema.db.categories.find(categoryId);
 
-    return { data: serializeToJSONAPI(category) };
+    return { data: serializeToJSONAPI('category', category) };
   });
 
-  this.get('/rentals', (_schema, request) => {
-    const categoryId = parseInt(request.queryParams['filter[category_id]']);
-    const rating = parseInt(request.queryParams['filter[rating]']);
-    let rentalsForCategory = rentals.filter((rental) => {
-      return rental['includes'].category_id === categoryId;
+  this.get('/rentals', (schema, request) => {
+    const categoryId = request.queryParams['filter[category_id]'];
+    const rating = request.queryParams['filter[rating]'];
+    let rentalsForCategory = schema.db.rentals.where(function(rental) {
+      return rental.relationships.category.data.id === categoryId;
     });
 
     if(rating) {
       rentalsForCategory = rentalsForCategory.filter((rental) => {
-        return rental.attributes.rating >= rating;
+        return rental.rating >= rating;
       });
     }
+
+    rentalsForCategory = rentalsForCategory.map((rental) => {
+      return serializeToJSONAPI('rental', rental);
+    });
 
     return { data: rentalsForCategory };
   });

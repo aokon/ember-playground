@@ -5,8 +5,16 @@ export default Factory.extend({
     return `Product ${i+1}`;
   },
 
+  description() {
+    return faker.lorem.paragraph().substring(0, 200);
+  },
+
   image() {
     return faker.image.city();
+  },
+
+  rating() {
+    return faker.helpers.randomize([1, 2, 3, 4, 5]);
   },
 
   address() {

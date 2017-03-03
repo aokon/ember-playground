@@ -13,6 +13,7 @@ export default Model.extend({
   address: attr(),
   zipCode: attr(),
   city: attr(),
+  rating: attr('number'),
 
   category: belongsTo('category')
 });
