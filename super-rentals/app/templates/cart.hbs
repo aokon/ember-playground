@@ -1,0 +1,15 @@
+{{#liquid-if cart.hasItems class="empty-cart"}}
+  <h2>Your car includes {{cart.size}} rentals</h2>
+  <hr>
+
+  <div class="row">
+    {{#liquid-bind model use="toDown" class="liquid-products" as |currentModel|}}
+      {{#each currentModel as |rental|}}
+        {{product-card product=rental removeItemFromCart=(action 'removeItem')}}
+      {{/each}}
+    {{/liquid-bind}}
+  </div>
+{{else}}
+  <h2>Your cart is empty</h2>
+  <hr>
+{{/liquid-if}}

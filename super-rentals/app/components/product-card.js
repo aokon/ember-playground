@@ -18,7 +18,13 @@ export default Component.extend({
     },
 
     removeFromCart() {
+      const removeItemFromCart = this.get('removeItemFromCart');
+
       this.get('cart').removeItem(this.get('product.id'));
+
+      if(removeItemFromCart) {
+        removeItemFromCart()
+      }
     }
   }
 });

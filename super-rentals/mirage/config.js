@@ -35,9 +35,22 @@ export default function() {
   this.get('/rentals', (schema, request) => {
     const categoryId = request.queryParams['filter[category_id]'];
     const rating = request.queryParams['filter[rating]'];
-    let rentalsForCategory = schema.db.rentals.where(function(rental) {
-      return rental.relationships.category.data.id === categoryId;
-    });
+    let rentalIds = request.queryParams['filter[rental_ids]'];
+    let rentalsForCategory;
+
+    if(categoryId) {
+      rentalsForCategory = schema.db.rentals.where(function(rental) {
+        return rental.relationships.category.data.id === categoryId;
+      });
+    }
+
+    if(rentalIds) {
+      rentalIds = JSON.parse(rentalIds);
+
+      rentalsForCategory = schema.db.rentals.where(function(rental) {
+        return rentalIds.includes(rental.id);
+      });
+    }
 
     if(rating) {
       rentalsForCategory = rentalsForCategory.filter((rental) => {

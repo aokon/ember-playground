@@ -11,7 +11,9 @@ test('visiting / redirects to /landing', function(assert) {
   });
 });
 
-test('displays landing', function(assert) {
+test('displays categories', function(assert) {
+  server.createList('category', 4);
+
   visit('/');
 
   andThen(function() {

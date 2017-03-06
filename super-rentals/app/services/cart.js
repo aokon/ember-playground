@@ -3,28 +3,42 @@ import { storageFor } from 'ember-local-storage';
 
 const {
   Service,
-  computed
+  computed,
+  inject
 } = Ember;
 
 export default Service.extend({
-  productIds: storageFor('cart'),
+  store: inject.service(),
+  itemIds: storageFor('cart'),
 
-  addItem(productId) {
-    if(!this.include(productId)) {
-      this.get('productIds').pushObject(productId);
+  addItem(itemId) {
+    if(!this.include(itemId)) {
+      this.get('itemIds').pushObject(itemId);
     }
   },
 
-  removeItem(productId) {
-    this.get('productIds').removeObject(productId);
+  removeItem(itemId) {
+    this.get('itemIds').removeObject(itemId);
   },
 
-  include(productId) {
-    return this.get('productIds').includes(productId);
+  items() {
+    let items = [];
+    if(this.get('hasItems')) {
+      const params = { rental_ids: JSON.stringify(this.get('itemIds.content')) };
+
+      items = this.get('store').query('rental', { filter: params });
+    }
+
+    return items;
   },
 
-  size: computed('productIds.[]', function() {
-    return this.get('productIds.length');
-  })
+  include(itemId) {
+    return this.get('itemIds').includes(itemId);
+  },
 
+  size: computed('itemIds.[]', function() {
+    return this.get('itemIds.length');
+  }),
+
+  hasItems: computed.gt('size', 0)
 });
