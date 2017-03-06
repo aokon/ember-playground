@@ -40,4 +40,11 @@ export default function() {
     this.use('toLeft'),
     this.reverse('toRight')
   );
+
+  this.transition(
+    this.hasClass('in-cart'),
+    this.toValue(true),
+    this.use('fade'),
+    this.reverse('toLeft')
+  );
 }

@@ -10,11 +10,11 @@
       <p>{{product.description}}</p>
     </div>
     <div class="card-action">
-      {{#if isInCart }}
+      {{#liquid-if isInCart class="in-cart"}}
         <button class="btn" {{action "removeFromCart"}}>Remove from Cart</button>
       {{else}}
         <button class="btn" {{action "addToCart"}}>Add to Cart</button>
-      {{/if}}
+      {{/liquid-if}}
     </div>
   </div>
 </div>
