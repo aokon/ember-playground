@@ -12,12 +12,12 @@ test('visiting / redirects to /landing', function(assert) {
 });
 
 test('displays categories', function(assert) {
-  server.createList('category', 4);
+  server.create('category', { name: "Cat 1" });
 
   visit('/');
 
   andThen(function() {
-    assert.equal(find('.category-card').length, 4,
+    assert.equal(find('.category-card').length, 1,
       'It renders default categories');
   });
 });

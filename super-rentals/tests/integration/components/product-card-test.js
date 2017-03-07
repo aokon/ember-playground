@@ -19,6 +19,6 @@ test('it renders', function(assert) {
   assert.equal(this.$('.card-title').text().trim(), product.get('name'),
     'It has valid card-title');
 
-  assert.equal(this.$('.card-content p').text().trim(),
+  assert.equal(this.$('.card-content .product-description').text().trim(),
     product.get('description'), 'It has valid description');
 });

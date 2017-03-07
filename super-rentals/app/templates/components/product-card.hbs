@@ -5,9 +5,13 @@
     </div>
     <div class="card-content">
       <span class="card-title">{{product.name}}</span>
-      <p>Rating: <strong>{{product.rating}}</strong></p>
-      <p>Price: <strong>{{product.priceWithCurrency}}</strong></p>
-      <p>{{product.description}}</p>
+      <p class="product-rating">
+        Rating: <strong>{{product.rating}}</strong>
+      </p>
+      <p class="product-price">
+        Price: <strong>{{product.priceWithCurrency}}</strong>
+      </p>
+      <p class="product-description">{{product.description}}</p>
     </div>
     <div class="card-action">
       {{#liquid-if isInCart class="in-cart"}}
