@@ -12,8 +12,11 @@ Router.map(function() {
   this.route('about');
   this.route('landing');
   this.route('cart');
-  this.route('category', { path: '/category/:id' }, function() {
-    this.route('products');
+
+  this.route('categories', function() {
+    this.route('category', { path: '/:id' }, function() {
+      this.route('products');
+    });
   });
 });
 

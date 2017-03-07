@@ -1,9 +1,0 @@
-{{product-filters filter=(action "filterProducts")}}
-
-<div class="row">
-  {{#liquid-bind model use="toDown" class="liquid-products" as |currentModel|}}
-    {{#each currentModel as |rental|}}
-      {{product-card product=rental}}
-    {{/each}}
-  {{/liquid-bind}}
-</div>

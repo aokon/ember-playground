@@ -6,8 +6,7 @@ const {
 
 export default Route.extend({
   model(params) {
-
-    const category = this.modelFor('category');
+    const category = this.modelFor('categories.category');
     const queryParams = {
       category_id: category.get('id'),
       ...params

@@ -1,0 +1,7 @@
+{{product-filters filter=(action "filterProducts")}}
+
+<div class="row">
+  {{#each model as |rental|}}
+    {{product-card product=rental}}
+  {{/each}}
+</div>

@@ -21,14 +21,14 @@ export default function() {
   );
 
   this.transition(
-    this.fromRoute('category'),
+    this.fromRoute('categories'),
     this.toRoute('contact'),
     this.use('toLeft'),
     this.reverse('toRight')
   );
 
   this.transition(
-    this.fromRoute('category'),
+    this.fromRoute('categories'),
     this.toRoute('about'),
     this.use('toLeft'),
     this.reverse('toRight')
