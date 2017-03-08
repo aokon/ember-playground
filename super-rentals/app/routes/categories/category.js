@@ -4,6 +4,6 @@ const { Route } = Ember;
 
 export default Route.extend({
   model(params) {
-    return this.get('store').findRecord('category', params.id);
+    return this.get('store').peekRecord('category', params.id);
   }
 });
