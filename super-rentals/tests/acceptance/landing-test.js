@@ -3,11 +3,11 @@ import moduleForAcceptance from 'super-rentals/tests/helpers/module-for-acceptan
 
 moduleForAcceptance('Acceptance | landing');
 
-test('visiting / redirects to /landing', function(assert) {
+test('visiting / redirects to /shop/landing', function(assert) {
   visit('/');
 
   andThen(function() {
-    assert.equal(currentURL(), '/landing');
+    assert.equal(currentURL(), '/shop/landing');
   });
 });
 

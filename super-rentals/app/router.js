@@ -8,16 +8,10 @@ const Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('index', { path: '/'} );
-  this.route('landing');
   this.route('cart');
 
-  this.route('categories', function() {
-    this.route('category', { path: '/:id' }, function() {
-      this.route('products');
-    });
-  });
-
   this.mount('static-pages', { path: '/p' });
+  this.mount('rentals-shop', { as: 'shop' });
 });
 
 export default Router;

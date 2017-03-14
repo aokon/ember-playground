@@ -1,9 +1,17 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
+import Resolver from 'ember-resolver';
 import Ember from 'ember';
 
+const resolver = Resolver.create();
+
+resolver.namespace = {
+  modulePrefix: 'rentals-shop'
+};
+
 moduleForComponent('category-card', 'Integration | Component | category card', {
-  integration: true
+  integration: true,
+  resolver
 });
 
 test('it renders', function(assert) {

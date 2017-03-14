@@ -1,9 +1,28 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
+import Resolver from 'ember-resolver';
 import Ember from 'ember';
 
+const cartStub = Ember.Service.extend({
+  items: [],
+  include() {
+    return true;
+  }
+});
+
+const resolver = Resolver.create();
+
+resolver.namespace = {
+  modulePrefix: 'rentals-shop'
+};
+
 moduleForComponent('product-card', 'Integration | Component | product card', {
-  integration: true
+  integration: true,
+  resolver,
+  beforeEach() {
+    this.register('service:cart', cartStub);
+    this.inject.service('cart', { as: 'cart' });
+  }
 });
 
 test('it renders', function(assert) {

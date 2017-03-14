@@ -1,10 +1,13 @@
 import Ember from 'ember';
 
 const {
-  Route
+  Route,
+  inject
 } = Ember;
 
 export default Route.extend({
+  store: inject.service(),
+
   model(params) {
     const category = this.modelFor('categories.category');
     const queryParams = {

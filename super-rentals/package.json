@@ -52,6 +52,7 @@
   "private": true,
   "ember-addon": {
     "paths": [
+      "lib/rentals-shop",
       "lib/static-pages"
     ]
   }
