@@ -3,11 +3,11 @@ import moduleForAcceptance from 'super-rentals/tests/helpers/module-for-acceptan
 
 moduleForAcceptance('Acceptance | contact');
 
-test('visiting /contact', function(assert) {
-  visit('/contact');
+test('visiting /p/contact', function(assert) {
+  visit('/p/contact');
 
   andThen(function() {
-    assert.equal(currentURL(), '/contact');
+    assert.equal(currentURL(), '/p/contact');
     assert.equal(find('h2').text(), 'Contact',
       'It has valid title');
     assert.equal(find('p').length, 2,

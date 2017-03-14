@@ -8,49 +8,49 @@ export default function() {
 
   this.transition(
     this.fromRoute('landing'),
-    this.toRoute('about'),
+    this.toRoute('static-pages.about'),
     this.use('toLeft'),
     this.reverse('toRight')
   );
 
   this.transition(
     this.fromRoute('landing'),
-    this.toRoute('contact'),
+    this.toRoute('static-pages.contact'),
     this.use('toLeft'),
     this.reverse('toRight')
   );
 
   this.transition(
     this.fromRoute('categories'),
-    this.toRoute('contact'),
+    this.toRoute('static-pages.contact'),
     this.use('toLeft'),
     this.reverse('toRight')
   );
 
   this.transition(
     this.fromRoute('categories'),
-    this.toRoute('about'),
+    this.toRoute('static-pages.about'),
     this.use('toLeft'),
     this.reverse('toRight')
   );
 
   this.transition(
-    this.fromRoute('contact'),
-    this.toRoute('about'),
-    this.use('toLeft'),
-    this.reverse('toRight')
-  );
-
-  this.transition(
-    this.fromRoute('cart'),
-    this.toRoute('about'),
+    this.fromRoute('static-pages.contact'),
+    this.toRoute('static-pages.about'),
     this.use('toLeft'),
     this.reverse('toRight')
   );
 
   this.transition(
     this.fromRoute('cart'),
-    this.toRoute('contact'),
+    this.toRoute('static-pages.about'),
+    this.use('toLeft'),
+    this.reverse('toRight')
+  );
+
+  this.transition(
+    this.fromRoute('cart'),
+    this.toRoute('static-pages.contact'),
     this.use('toLeft'),
     this.reverse('toRight')
   );

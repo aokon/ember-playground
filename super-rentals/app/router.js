@@ -8,8 +8,6 @@ const Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('index', { path: '/'} );
-  this.route('contact');
-  this.route('about');
   this.route('landing');
   this.route('cart');
 
@@ -18,6 +16,8 @@ Router.map(function() {
       this.route('products');
     });
   });
+
+  this.mount('static-pages', { path: '/p' });
 });
 
 export default Router;

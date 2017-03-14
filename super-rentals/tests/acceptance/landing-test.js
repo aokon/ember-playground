@@ -27,7 +27,7 @@ test('displaying the contact link ', function(assert) {
   click('a:contains("Contact")');
 
   andThen(function() {
-    assert.equal(currentURL(), '/contact');
+    assert.equal(currentURL(), '/p/contact');
   });
 });
 
@@ -36,6 +36,6 @@ test('displaying the About link ', function(assert) {
   click('a:contains("About")');
 
   andThen(function() {
-    assert.equal(currentURL(), '/about');
+    assert.equal(currentURL(), '/p/about');
   });
 });
