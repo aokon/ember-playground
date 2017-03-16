@@ -1,0 +1,9 @@
+{
+  "name": "shared-utils",
+  "keywords": [
+    "ember-addon"
+  ],
+  "dependencies": {
+    "ember-cli-htmlbars": "*"
+  }
+}

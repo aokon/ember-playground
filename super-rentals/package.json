@@ -53,6 +53,8 @@
   "ember-addon": {
     "paths": [
       "lib/rentals-shop",
+      "lib/shared-utils",
+      "lib/shopping-cart",
       "lib/static-pages"
     ]
   }

@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import layout from '../templates/components/product-card';
 
 const {
   Component,
@@ -7,6 +8,7 @@ const {
 } = Ember;
 
 export default Component.extend({
+  layout,
   cart: inject.service(),
   isInCart: computed('product', 'cart.size', function() {
     return this.get('cart').include(this.get('product.id'));
