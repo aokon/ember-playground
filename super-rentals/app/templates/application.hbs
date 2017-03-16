@@ -3,13 +3,13 @@
     <li>{{#link-to "index"}}Home{{/link-to}}</li>
     <li>{{#link-to "static-pages.about"}}About{{/link-to}}</li>
     <li>{{#link-to "static-pages.contact"}}Contact{{/link-to}}</li>
-    <li>{{#link-to "cart"}}Your Cart({{cart.size}}){{/link-to}}</li>
+    <li>{{#link-to "shopping-cart.index"}}Your Cart({{cart.size}}){{/link-to}}</li>
   </ul>
   {{app-spinner showSpinner=showSpinner}}
 </nav>
 
 <main>
   <div class="container">
-    {{liquid-outlet}}
+    {{outlet}}
   </div>
 </main>

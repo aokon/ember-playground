@@ -13,6 +13,15 @@ App = Ember.Application.extend({
   Resolver,
 
   engines: {
+    shoppingCart: {
+      dependencies: {
+        services: [
+          'store',
+          'cart'
+        ]
+      }
+    },
+
     rentalsShop: {
       dependencies: {
         services: [

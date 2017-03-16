@@ -7,11 +7,11 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.route('index', { path: '/'} );
-  this.route('cart');
+  this.route('index', { path: '/' } );
 
   this.mount('static-pages', { path: '/p' });
   this.mount('rentals-shop', { as: 'shop' });
+  this.mount('shopping-cart');
 });
 
 export default Router;

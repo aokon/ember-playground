@@ -1,0 +1,13 @@
+{{#if cart.hasItems}}
+  <h2>Your car includes {{cart.size}} rentals</h2>
+  <hr>
+
+  <div class="row">
+    {{#each model as |rental|}}
+      {{product-card product=rental removeItemFromCart=(action 'removeItem')}}
+    {{/each}}
+  </div>
+{{else}}
+  <h2>Your cart is empty</h2>
+  <hr>
+{{/if}}
